@@ -13,6 +13,7 @@ const InsertSort = function (nums = [], compare = function (a,b) { return a > b;
         }
         nums[i + 1] = key;
     }
+    return nums;
 }
 
 module.exports = InsertSort;

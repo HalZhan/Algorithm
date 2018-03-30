@@ -18,6 +18,7 @@ const SelectSort = function (nums = [], compare = function (a, b) { return a > b
         }
 
     }
+    return nums;
 }
 
 module.exports = SelectSort;

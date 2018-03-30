@@ -1,8 +1,10 @@
 const BubbleSort = require('./BubbleSort');
 const BubbleSortWithPos = require('./BubbleSortWithPos');
 const InsertSort = require('./InsertSort');
+const MergeSort = require('./MergeSort');
 const SelectSort = require('./SelectSort');
 const ShellSort = require('./ShellSort');
+const QuickSort = require('./QuickSort');
 
 const randNumbers = function (opt = {}) {
     let lower = opt.lower || 0;
@@ -22,14 +24,14 @@ const doSort = function (sort, nums) {
         lower: 0, upper: 10000, size: 20
     });
     console.log('Raw Numbers: ', nums);
-    let startTime = +new Date();
-    sort(nums, function(a, b) {
+    let startTime = +new Date(),
+    result = sort(nums, function(a, b) {
         return a > b;
     });
     let endTime = +new Date();
-    console.info(`After ${sort.name}: `, nums);
+    console.info(`After ${sort.name}: `, result);
     console.info(`${sort.name} used `, (endTime - startTime), 'ms');
 
 }
 
-doSort(ShellSort);
+doSort(QuickSort);
