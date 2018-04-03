@@ -1,3 +1,4 @@
+const randNumbers = require('../utils/randNumbers');
 const BubbleSort = require('./BubbleSort');
 const BubbleSortWithPos = require('./BubbleSortWithPos');
 const InsertSort = require('./InsertSort');
@@ -5,19 +6,9 @@ const MergeSort = require('./MergeSort');
 const SelectSort = require('./SelectSort');
 const ShellSort = require('./ShellSort');
 const QuickSort = require('./QuickSort');
-
-const randNumbers = function (opt = {}) {
-    let lower = opt.lower || 0;
-    let upper = opt.upper || 10;
-    let size = opt.size || 10;
-    let nums = [];
-    for (let i = 0; i < size; i++) {
-        let num = Math.random() * (upper - lower) + lower;
-        num = parseInt(num, 10);
-        nums.push(num);
-    }
-    return nums;
-};
+const HeapSort = require('./HeapSort');
+const CountingSort = require('./CountingSort');
+const RadixSort = require('./RadixSort');
 
 const doSort = function (sort, nums) {
     nums = nums || randNumbers({
@@ -34,4 +25,4 @@ const doSort = function (sort, nums) {
 
 }
 
-doSort(QuickSort);
+doSort(RadixSort);

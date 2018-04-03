@@ -1,12 +1,18 @@
 const swap = require('./swap');
 
-function heapify(arr = [], start, end) {
+function max_heapify(arr = [], start, end) {
     let parent = start,
-        child = parent*2+1;
-    if(child>=end) {
+        child = parent * 2 + 1;
+    if (child >= end) {
         return;
     }
-    
+    if (child + 1 < end && arr[child] < arr[child + 1]) {
+        child++;
+    }
+    if (arr[parent] <= arr[child]) {
+        swap(arr, parent, child);
+        max_heapify(arr, child, end);
+    }
 }
 
 /**
@@ -14,6 +20,14 @@ function heapify(arr = [], start, end) {
  * @param {array} arr 
  * @param {function} compare 
  */
-module.exports = function HeapSort(arr = [], compare = function (a, b) { return a > b; }) {
-
+module.exports = function HeapSort(arr = []) {
+    let len = arr.length, i;
+    for (i = Math.floor(len / 2) - 1; i >= 0; i--) {
+        max_heapify(arr, i, len);
+    }
+    for (i = len - 1; i > 0; i--) {
+        swap(arr, 0, i);
+        max_heapify(arr, 0, i);
+    }
+    return arr;
 }
