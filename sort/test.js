@@ -25,4 +25,4 @@ const doSort = function (sort, nums) {
 
 }
 
-doSort(RadixSort);
+doSort(HeapSort);

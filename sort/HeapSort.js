@@ -3,16 +3,29 @@ const swap = require('./swap');
 function max_heapify(arr = [], start, end) {
     let parent = start,
         child = parent * 2 + 1;
-    if (child >= end) {
-        return;
+    while (child < end) {
+        if (child + 1 < end && arr[child] < arr[child + 1]) {
+            child++;
+        }
+        if(arr[parent] > arr[child]) {
+            return;
+        }
+        else {
+            swap(arr, parent, child);
+            parent = child;
+            child = parent * 2 + 1;
+        }
     }
-    if (child + 1 < end && arr[child] < arr[child + 1]) {
-        child++;
-    }
-    if (arr[parent] <= arr[child]) {
-        swap(arr, parent, child);
-        max_heapify(arr, child, end);
-    }
+    // if (child >= end) {
+    //     return;
+    // }
+    // if (child + 1 < end && arr[child] < arr[child + 1]) {
+    //     child++;
+    // }
+    // if (arr[parent] <= arr[child]) {
+    //     swap(arr, parent, child);
+    //     max_heapify(arr, child, end);
+    // }
 }
 
 /**
